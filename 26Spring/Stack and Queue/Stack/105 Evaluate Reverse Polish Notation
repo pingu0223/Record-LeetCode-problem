@@ -1,0 +1,28 @@
+My code：
+后缀表达式（string版本）
+注意stoi(string s)=(int)
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class Solution {
+public:
+    int evalRPN(vector<string>& tokens) {
+        int i;
+        stack<int> list;
+        for(i=0;i<tokens.size();i++){
+            string s=tokens[i];
+            if(s!="+"&&s!="-"&&s!="*"&&s!="/"){int j=stoi(s);list.push(j);}
+            else{
+                int b=list.top();
+                list.pop();
+                int a=list.top();
+                list.pop();
+                if(s=="+") {list.push(a+b);}
+                else if(s=="-"){list.push(a-b);}
+                else if(s=="*"){list.push(a*b);}
+                else list.push(a/b);
+            }
+                
+        }
+        return list.top();
+    }
+};
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
