@@ -1,0 +1,29 @@
+My code:
+这道题真的卡了很久，一共花了28min才做出来的ToT，果断决定引入头结点！然后一下子就清晰很多了
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        ListNode* dummy = new ListNode(0);  // 创建哑结点，值随便（通常0）
+        dummy->next = head;                 // 哑结点指向原链表头
+        head=dummy;
+        ListNode* pre=head;
+        ListNode* after=nullptr;
+        while(true){
+        int i;
+        ListNode* pos=pre;
+        for(i=0;i<2;i++){
+            pos=pos->next;
+            if(pos==nullptr) return head->next;
+        }
+        after=pos->next;
+        ListNode* prev=pre->next;
+        ListNode* curr=prev->next;
+        prev->next=after;
+        pre->next=curr;
+        curr->next=prev;
+        pre=prev;
+        if(after==nullptr) return head->next;
+        }}
+};
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
