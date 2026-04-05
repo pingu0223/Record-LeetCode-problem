@@ -1,0 +1,54 @@
+My code:
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class MyStack {
+private:
+deque<int>in;
+deque<int>out;
+int length_;
+public:
+    MyStack() {
+        length_=0;
+    }
+    
+    void push(int x) {
+        in.push_back(x);
+        length_++;
+    }
+    
+    int pop() {
+        int result;
+        while(!in.empty()){
+                int x=in.front();
+                in.pop_front();
+                
+                if(in.empty()){result=x;}
+                else{out.push_back(x);} 
+        }
+        while(!out.empty()){
+            int x=out.front();
+            out.pop_front();
+            in.push_back(x);
+        }
+        length_--;
+        return result;
+            }
+    
+    int top() {
+        int x=this->pop();
+        this->push(x);
+        return x;
+    }
+    
+    bool empty() {
+        if(in.size()==0) return true;
+        return false;
+    }
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+优化版：只用一个队列来表示栈：前面出的后面入；
+//todo
+
+
+
