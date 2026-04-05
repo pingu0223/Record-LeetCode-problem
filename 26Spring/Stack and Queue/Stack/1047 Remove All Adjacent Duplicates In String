@@ -1,0 +1,22 @@
+My code:
+class Solution {
+public:
+    string removeDuplicates(string s) {
+        stack<char>a;
+        int i;
+        for(i=0;i<s.size();i++){
+            char item=s[i];
+            if(a.empty()||item!=a.top()) a.push(item);
+            else a.pop();
+        }
+        string result="";
+        while(!a.empty()){
+            result=a.top()+result;
+            a.pop();
+        }
+        return result;
+    }
+};
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+不要用会改变的a.size()做控制for循环的量
+以及别忘了栈是先入后出所以是a.top()+result
