@@ -1,0 +1,40 @@
+My code:
+14-minute极速AC
+要记住内部翻转链表就像用两个元素的数组滑动遍历一样~
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class Solution {
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+    if(k==1) return head;
+     ListNode* dummy=new ListNode{0}; 
+     dummy->next=head;
+     head=dummy;
+     int i;
+     ListNode* pre=head;
+     ListNode* after=nullptr;
+     ListNode* start=head->next;
+     while(true){
+        ListNode* pos=pre;
+        for(i=0;i<k;i++){
+            pos=pos->next;
+            if(pos==nullptr) return head->next;
+        }
+        after=pos->next;
+        ListNode* prev=pre->next;
+        ListNode* curr=prev->next;
+        while(curr!=after){
+            ListNode* temp=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=temp;
+        }
+        pre->next=prev;
+        start->next=after;
+        pre=start;
+        start=after;
+     }
+     return head->next;
+
+    }
+};
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
