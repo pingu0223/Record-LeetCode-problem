@@ -1,0 +1,46 @@
+My code:
+class MyQueue {
+    private:
+    stack<int>in;
+    stack<int>out;
+    int length_;
+public:
+    MyQueue() {
+        length_=0;
+    }
+    
+    void push(int x) {
+        in.push(x);
+        length_++;
+    }
+    
+    int pop() {
+        if(out.empty()){
+            while(!in.empty()){
+                int x=in.top();
+                out.push(x);
+                in.pop();
+            }
+        }
+        int result=out.top();
+        out.pop();
+        length_--;
+        return result;
+    }
+    
+    int peek() {
+        if(out.empty()){
+            while(!in.empty()){
+                int x=in.top();
+                out.push(x);
+                in.pop();
+            }}
+            return out.top();
+        
+    }
+    
+    bool empty() {
+        if(out.empty()&&in.empty()) return true;
+        return false;
+    }
+};
