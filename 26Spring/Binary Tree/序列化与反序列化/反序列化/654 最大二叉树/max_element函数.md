@@ -1,7 +1,7 @@
 # max_element函数讲解
 
 ## 头文件
-<algorithm>
+algorithm
 
 ## 用法
 ```cpp
